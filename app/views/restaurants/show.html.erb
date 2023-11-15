@@ -1,0 +1,22 @@
+<h1> <%= @restaurant.name %> </h1>
+
+<p>Ce restaurant est situé à <%= @restaurant.address %></p>
+
+<% unless @restaurant.phone_number.nil? %>
+<p> Numéro de téléphone : <%= @restaurant.phone_number %> </p>
+<% end %>
+
+<p> Ce restaurant propose de la cuisine <%= @restaurant.category %> </p>
+
+
+<h3>Ajouter un avis</h3>
+<%= simple_form_for [@restaurant, Review.new] do |f| %>
+  <%= f.input :rating %>
+  <%= f.input :content %>
+  <%= f.submit %>
+<% end %>
+
+<br>
+<%= link_to "Voir les avis", restaurant_reviews_path(@restaurant) %>
+<br>
+<%= link_to "Retour à la liste", restaurants_path %>

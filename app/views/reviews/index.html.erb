@@ -1,0 +1,18 @@
+<h1> Les avis pour <%= @restaurant.name %> </h1>
+
+<% if @restaurant.reviews == [] %>
+  <p>Aucun avis pour ce restaurant</p>
+<% else %>
+  <p> Voici les avis sur ce restaurant : </p>
+  <% @restaurant.reviews.each do |review| %>
+    <ul>
+      <li> <%= review.rating %> - <%= review.content %> </li>
+    </ul>
+  <% end %>
+<% end %>
+
+<br>
+<%= link_to "Retour au restaurant", restaurant_path(@restaurant) %>
+<br>
+
+<%= link_to "Retour à la liste des restaurants", restaurants_path %>
